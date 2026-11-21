@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Premium Guides | Unlock Your Potential</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --card: #151922;
+      --card-hover: #1c2230;
+      --text: #f0f2f7;
+      --muted: #9aa3b5;
+      --accent: #7c5cff;
+      --accent2: #ff4d6d;
+      --gold: #f5c542;
+      --success: #2dd4a8;
+      --radius: 18px;
+      --shadow: 0 20px 40px rgba(0,0,0,0.45);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Subtle background glow */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(124, 92, 255, 0.18), transparent),
+        radial-gradient(ellipse 60% 40% at 100% 50%, rgba(255, 77, 109, 0.08), transparent);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 0 16px 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header */
+    header {
+      padding: 28px 0 20px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(124, 92, 255, 0.15);
+      color: #c4b5fd;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 100px;
+      margin-bottom: 14px;
+      letter-spacing: 0.3px;
+    }
+
+    h1 {
+     
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #fff 0%, #c4b5fd 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 14.5px;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    /* Product Grid */
+    .products {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: var(--shadow);
+      transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:active {
+      transform: scale(0.985);
+    }
+
+    .card:hover {
+      background: var(--card-hover);
+      border-color: rgba(124, 92, 255, 0.25);
+    }
+
+    /* Cover */
+    .cover {
+
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .cover::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 60%);
+    }
+
+    .cover-inner {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+ 
+      width: 100%;
+    }
+
+    .cover-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #fff;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+      margin-bottom: 6px;
+    }
+
+    .cover-sub {
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+
+    /* Different cover gradients */
+    .cover-height {
+      background: linear-gradient(145deg, #0f172a 0%, #1e3a5f 40%, #0c4a6e 100%);
+    }
+    .cover-height .accent-icon { color: #38bdf8; }
+
+    .cover-texting {
+         background: #ff8159;;
+    }
+    .cover-texting .accent-icon { color: #fb7185; }
+
+    .cover-reset {
+      background: linear-gradient(145deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%);
+    }
+    .cover-reset .accent-icon { color: #c4b5fd; }
+
+    .cover-ex {
+      background: linear-gradient(145deg, #0c0a09 0%, #450a0a 40%, #7f1d1d 100%);
+    }
+    .cover-ex .accent-icon { color: #f87171; }
+
+    .cover-dopamine {
+      background: linear-gradient(145deg, #020617 0%, #1e3a8a 45%, #0ea5e9 100%);
+    }
+    .cover-dopamine .accent-icon { color: #38bdf8; }
+
+    .accent-icon {
+      font-size: 28px;
+      margin-bottom: 10px;
+      display: block;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+    }
+
+    /* Card body */
+    .card-body {
+      padding: 18px 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .card-title {
+      font-size: 16.5px;
+      font-weight: 700;
+      line-height: 1.35;
+      color: #fff;
+    }
+
+    .card-desc {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 9px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.07);
+      color: #c7d0e0;
+    }
+
+    .tag.hot {
+      background: rgba(255, 77, 109, 0.18);
+      color: #ff8fa3;
+    }
+
+    .tag.new {
+      background: rgba(45, 212, 168, 0.15);
+      color: #5eead4;
+    }
+
+    /* CTA Button */
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 14px 18px;
+      border: none;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(135deg, #7c5cff 0%, #5b3fd4 100%);
+      box-shadow: 0 8px 20px rgba(124, 92, 255, 0.35);
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      margin-top: 4px;
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+    .btn:hover {
+      box-shadow: 0 10px 28px rgba(124, 92, 255, 0.5);
+    }
+
+    .btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Footer note */
+    .footer-note {
+      text-align: center;
+      margin-top: 36px;
+      font-size: 12.5px;
+      color: var(--muted);
+      opacity: 0.8;
+    }
+
+    .footer-note strong {
+      color: #c4b5fd;
+    }
+
+    /* Small screens tweaks */
+    @media (max-width: 330px) {
+      h1 { font-size: 23px; }
+      .cover { height: 160px; }
+      .cover-title { font-size: 19px; }
+    }
+
+    /* Slightly larger phones / tablets */
+    @media (min-width: 480px) {
+      .container { padding: 0 20px 70px; }
+      .cover { height: 200px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge">
+        <span>🔥</span> Limited Access • Instant Download
+      </div>
+      <h1>Unlock Your Full Potential</h1>
+      <p class="subtitle">
+        Proven psychology-backed guides to transform your dating life, relationships & confidence
+      </p>
+    </header>
+
+    <div class="products">
+
+      <!-- 4. Get Ex Obsessed -->
+      <article class="card">
+        <div class="cover cover-ex">
+          <div class="cover-inner">
+              <img src="imagef1.jpg" width="100%">
+          </div>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">A Psychological Guide to Getting Your Ex Obsessed Over You in 21 Days</h2>
+          <p class="card-desc">
+            Understand the psychology of obsession and use it ethically. Learn the exact moves that make your ex start missing you and wanting you back.
+          </p>
+          <div class="meta">
+            <span class="tag hot">Popular</span>
+            <span class="tag">Ex Back</span>
+          </div>
+          <a href="https://superprofile.bio/vp/-4ckYesr" class="btn" target="_blank" rel="noopener">
+            Get Instant Access
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- 5. Dopamine Texts -->
+      <article class="card">
+        <div class="cover cover-dopamine">
+          <div class="cover-inner">
+             <img src="imagef2.jpg" width="100%">
+          </div>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">Text like a boss and score dates with 8s and 10s with Dopamine Texts Method</h2>
+          <p class="card-desc">
+            Master high-value texting that triggers dopamine. Create curiosity, tension and desire so attractive women actually want to meet you.
+          </p>
+          <div class="meta">
+            <span class="tag new">Advanced</span>
+            <span class="tag">Texting</span>
+          </div>
+          <a href="https://superprofile.bio/vp/bM_DYk-U" class="btn" target="_blank" rel="noopener">
+            Get Instant Access
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- 1. Height Potential -->
+      <article class="card">
+        <div class="cover cover-height">
+          <div class="cover-inner">
+          <img src="imagef3.jpg" width="100%">
+          </div>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">Congrats! You're One Step Away from Unlocking Your FULL HEIGHT POTENTIAL!</h2>
+          <p class="card-desc">
+            Discover the science-backed methods to maximize your natural height potential. Simple daily habits, posture secrets & growth triggers that actually work.
+          </p>
+          <div class="meta">
+            <span class="tag new">New</span>
+            <span class="tag">Self Improvement</span>
+          </div>
+          <a href="https://superprofile.bio/vp/h-975" class="btn" target="_blank" rel="noopener">
+            Get Instant Access
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- 2. Effortless Texting -->
+      <article class="card">
+        <div class="cover cover-texting">
+          <div class="cover-inner">
+           <img src="imagef4.jpg" width="100%">
+          </div>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">Effortless Texting Guide E-Book</h2>
+          <p class="card-desc">
+            Stop overthinking every message. Learn the exact frameworks that make women reply faster, stay interested longer, and want to meet you in person.
+          </p>
+          <div class="meta">
+            <span class="tag hot">Best Seller</span>
+            <span class="tag">Dating</span>
+          </div>
+          <a href="https://superprofile.bio/vp/💖-effortless-texting-guide-e-book" class="btn" target="_blank" rel="noopener">
+            Get Instant Access
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- 3. Reset Relationship -->
+      <article class="card">
+        <div class="cover cover-reset">
+          <div class="cover-inner">
+            <img src="imagef5.jpg" width="100%">
+          </div>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">How to Reset Your Relationship Using Psychology in 21 Days</h2>
+          <p class="card-desc">
+            A step-by-step 21-day psychological reset plan. Rebuild attraction, fix communication, and create a deeper emotional connection that lasts.
+          </p>
+          <div class="meta">
+            <span class="tag">Relationships</span>
+            <span class="tag">21-Day Plan</span>
+          </div>
+          <a href="https://superprofile.bio/vp/WFurnB5u" class="btn" target="_blank" rel="noopener">
+            Get Instant Access
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+	        <!-- 3. Reset Relationship -->
+      <article class="card">
+        <div class="cover cover-reset">
+          <div class="cover-inner">
+            <img src="imagef6.jpg" width="100%">
+          </div>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">FORCE YOUR BODY TO INCREASE TESTOSTERONE LEVELS UP TO 200%</h2>
+          <p class="card-desc">
+           TRICK THE BODY TO BOOST TESTOSTERONE LEVELS BY UP TO 200%.
+          </p>
+          <div class="meta">
+            <span class="tag">Testosterone</span>
+            <span class="tag">BestSellers</span>
+          </div>
+          <a href="https://superprofile.bio/vp/TestoUnlock_fz" class="btn" target="_blank" rel="noopener">
+            Get Instant Access
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="footer-note">
+      Instant PDF download • Lifetime access<br>
+      <strong>Questions?</strong> Message me on Instagram / YouTube
+    </p>
+  </div>
+</body>
+</html>
